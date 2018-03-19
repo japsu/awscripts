@@ -3,7 +3,6 @@
 ## Installation
 
     pip3 install boto3
-    install -m 755 ./aws-mfa.py /usr/local/bin/aws-mfa
     install -m 755 ./awssume-role.py /usr/local/bin/awssume-role
 
 ## Configuration
@@ -22,20 +21,13 @@ A profile with `role_arn` and `mfa_serial` is required for `awssume-role`.
 
 ### `~/.aws/credentials`
 
-An `mfa_serial` under `default` is required for `aws-mfa`.
+Put your `aws_access_key_id` and `aws_secret_access_key` here:
 
     [default]
     aws_access_key_id = …
     aws_secret_access_key = …
-    mfa_serial = arn:aws:iam::…
 
 ## Usage
-
-### `eval $(aws-mfa 666666)`
-
-If you need to use MFA but a role switch is not required.
-
-Uses the STS *getSessionToken* API to get a session token using the provided MFA token.
 
 ### `eval $(awssume-role prod 666666)`
 
